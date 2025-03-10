@@ -1,0 +1,22 @@
+meta {
+  name: get clients with filters
+  type: http
+  seq: 4
+}
+
+get {
+  url: {{connectionPath}}/user/clients/filter
+  body: none
+  auth: bearer
+}
+
+params:query {
+  ~gender: Male
+  ~date_of_birth: 1990-07-05
+  ~city: Lake Diann
+  ~country: United states
+}
+
+auth:bearer {
+  token: {{userToken}}
+}

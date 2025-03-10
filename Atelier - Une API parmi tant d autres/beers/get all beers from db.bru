@@ -1,0 +1,15 @@
+meta {
+  name: get all beers from db
+  type: http
+  seq: 2
+}
+
+get {
+  url: {{connectionPath}}/user/beers
+  body: none
+  auth: bearer
+}
+
+auth:bearer {
+  token: {{userToken}}
+}

@@ -1,0 +1,18 @@
+meta {
+  name: register scrapper
+  type: http
+  seq: 6
+}
+
+post {
+  url: {{connectionPath}}/register/scrapper
+  body: json
+  auth: none
+}
+
+body:json {
+  {
+    "username": "scrapper",
+    "password": "scrapper"
+  }
+}

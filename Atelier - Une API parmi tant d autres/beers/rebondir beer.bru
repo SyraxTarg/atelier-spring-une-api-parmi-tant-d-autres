@@ -1,0 +1,15 @@
+meta {
+  name: rebondir beer
+  type: http
+  seq: 9
+}
+
+get {
+  url: {{connectionPath}}/rebond/beers
+  body: none
+  auth: bearer
+}
+
+auth:bearer {
+  token: {{userToken}}
+}

@@ -1,0 +1,21 @@
+meta {
+  name: get beer with filters
+  type: http
+  seq: 4
+}
+
+get {
+  url: {{connectionPath}}/user/beers/filter
+  body: none
+  auth: bearer
+}
+
+params:query {
+  ~style: belgian strong ale
+  ~brand: Kirin
+  ~name: Maudite
+}
+
+auth:bearer {
+  token: {{userToken}}
+}

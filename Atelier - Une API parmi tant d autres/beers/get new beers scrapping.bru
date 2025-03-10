@@ -1,0 +1,19 @@
+meta {
+  name: get new beers scrapping
+  type: http
+  seq: 8
+}
+
+get {
+  url: {{connectionPath}}/scrapper/beers?number=10
+  body: none
+  auth: bearer
+}
+
+params:query {
+  number: 10
+}
+
+auth:bearer {
+  token: {{userToken}}
+}

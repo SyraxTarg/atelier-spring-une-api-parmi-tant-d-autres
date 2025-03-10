@@ -1,0 +1,27 @@
+meta {
+  name: Connection as Scrapper
+  type: http
+  seq: 2
+}
+
+post {
+  url: {{connectionPath}}/login
+  body: json
+  auth: bearer
+}
+
+auth:bearer {
+  token: {{userToken}}
+}
+
+body:json {
+  {
+      "username": "scrapper1",
+      "password" : "password"
+  }
+}
+
+script:post-response {
+  bru.setVar("userToken", res.body.token);
+  
+}

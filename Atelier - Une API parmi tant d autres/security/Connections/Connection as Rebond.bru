@@ -1,0 +1,27 @@
+meta {
+  name: Connection as Rebond
+  type: http
+  seq: 5
+}
+
+post {
+  url: {{connectionPath}}/login
+  body: json
+  auth: bearer
+}
+
+auth:bearer {
+  token: {{userToken}}
+}
+
+body:json {
+  {
+      "username": "rebond1",
+      "password" : "password"
+  }
+}
+
+script:post-response {
+  bru.setVar("userToken", res.body.token);
+  
+}

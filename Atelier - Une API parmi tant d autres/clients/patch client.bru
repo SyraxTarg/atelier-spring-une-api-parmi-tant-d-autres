@@ -1,0 +1,34 @@
+meta {
+  name: patch client
+  type: http
+  seq: 6
+}
+
+patch {
+  url: {{connectionPath}}/user/clients/3
+  body: json
+  auth: bearer
+}
+
+auth:bearer {
+  token: {{userToken}}
+}
+
+body:json {
+  {
+    "uid":"eb272867-3855-484f-8524-3ee88d365cb1",
+    "first_name": "Léo",
+    "last_name": "Durand",
+    "gender": "Male",
+    "phone_number": "+333 874.552.7x984",
+    "email": "leo.durand@mail.com",
+    "username": "leodu",
+    "date_of_birth": "1998-09-12",
+    "address": {
+      "city": "Quelque part",
+      "zip_code": "75008",
+      "country": "France"
+    }
+  }
+  
+}

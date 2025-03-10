@@ -1,0 +1,15 @@
+meta {
+  name: rebondir client
+  type: http
+  seq: 9
+}
+
+get {
+  url: {{connectionPath}}/rebond/clients
+  body: none
+  auth: bearer
+}
+
+auth:bearer {
+  token: {{userToken}}
+}

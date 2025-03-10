@@ -1,0 +1,26 @@
+meta {
+  name: Connection as User
+  type: http
+  seq: 4
+}
+
+post {
+  url: {{connectionPath}}/login
+  body: json
+  auth: bearer
+}
+
+auth:bearer {
+  token: {{userToken}}
+}
+
+body:json {
+  {
+      "username": "user1",
+      "password" : "password"
+  }
+}
+
+script:post-response {
+  bru.setVar("userToken", res.body.token);
+}

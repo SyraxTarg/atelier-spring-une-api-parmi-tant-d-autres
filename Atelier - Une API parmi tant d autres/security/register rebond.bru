@@ -1,0 +1,18 @@
+meta {
+  name: register rebond
+  type: http
+  seq: 5
+}
+
+post {
+  url: {{connectionPath}}/register/rebond
+  body: json
+  auth: none
+}
+
+body:json {
+  {
+    "username": "rebond",
+    "password": "rebond"
+  }
+}

@@ -1,0 +1,31 @@
+meta {
+  name: patch beer
+  type: http
+  seq: 6
+}
+
+patch {
+  url: {{connectionPath}}/user/beers/1
+  body: json
+  auth: bearer
+}
+
+auth:bearer {
+  token: {{userToken}}
+}
+
+body:json {
+  {
+    "uid": null,
+    "name": "Sombre Éclipse",
+    "brand": "Lune Noire",
+    "style": "Porter",
+    "hop": "East Kent Goldings",
+    "yeast": "1084 - Irish Ale",
+    "malts": "Caramel",
+    "ibu": "28 IBU",
+    "alcohol": "5.6%",
+    "blg": "7.0°Blg"
+  }
+  
+}

@@ -1,0 +1,15 @@
+meta {
+  name: get new client
+  type: http
+  seq: 1
+}
+
+get {
+  url: {{connectionPath}}/scrapper/clients/new
+  body: none
+  auth: bearer
+}
+
+auth:bearer {
+  token: {{userToken}}
+}

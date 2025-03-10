@@ -1,0 +1,15 @@
+meta {
+  name: get new beer
+  type: http
+  seq: 1
+}
+
+get {
+  url: {{connectionPath}}/scrapper/beers/new
+  body: none
+  auth: bearer
+}
+
+auth:bearer {
+  token: {{userToken}}
+}
