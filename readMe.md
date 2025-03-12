@@ -1,24 +1,6 @@
 # Atelier - Une api parmi tant d'autres
 #### Maimiti Saint-Marc B3 dev. web & app
 
-## Contexte
-Dans le cadre de la fin du module de Spring, il est demandé de réaliser l'atelier "une api parmi tant d'autres".
-
-## Attendus
-Le projet doit :
-- Être sécurisé avec Spring Security.
-- Permettre à un utilisateur de créer un compte et de se connecter.
-- Permettre de faire “rebondir” deux requêtes de votre API vers l’API distante de votre choix.
-- Permettre de scraper une partie de l’API de votre choix.
-- - En enregistrant ces éléments dans une base de données.
-- - En ajoutant un CRUD basé sur l’entité résultante de ce scrapping.
-- Des rôles différents pour :
-- - Faire rebondir une requête.
-- - Lancer le scrapping.
-- - Utiliser le CRUD.
-- Le projet doit être proprement découpé (Services, DTO, etc)
-- La base de données devra être initialisée proprement (via Flyway ou Liquibase).
-- L’ensemble des routes devra pouvoir être testé avec une collection d’appels API (Postman / Bruno).
 
 ## Mise en place du projet
 1) Créer un fichier `src/main/resources/application.properties` à la racine du projet
@@ -28,9 +10,8 @@ Le projet doit :
 - - `USERNAME`: le username pour accéder à votre base de données
 - - `PASSWORD`: le mot de passe pour accéder à la base de données
 - - `JWT_SECRET`: la chaine de caractère utilisée pour vérifier et signer les tokens jwt. Vous pouver utiliser la ligne de commande `openssl rand -base64 100` si vous avez openssl, elle génèrera une chaine de 100 caractères aléatoires.
-3) Charger le maven du projet
-4) Exporter la collection bruno pour avoir les appels api
-5) N'oubliez pas de créer un environnement pour pouvoir y renseigner `{{connectionPath}}` qui vaut `http://localhost:8085/api/v1`.
+3) Exporter la collection bruno pour avoir les appels api
+4) N'oubliez pas de créer un environnement pour pouvoir y renseigner `{{connectionPath}}` qui vaut `http://localhost:8085/api/v1`.
 
 ## Description du projet
 Trois roles sont définis pour ce projet:
@@ -44,11 +25,11 @@ Il sera donc possible d'interroger cette api distante sans rien ajouter en db. S
 
 ## Documentation de l'api
 ### Security
-- Registration with role_user : `/register/user`
-- Registration with role_rebond: `/register/rebond`
-- Registration with role_scrap: `/register/scrapper`
-- Login: `/login`
-- Check current rights: `/test/security`
+- Inscription avec le rôle **USER** : `/register/user`
+- Inscription avec le rôle **REBOND** : `/register/rebond`
+- Inscription avec le rôle **SCRAP** : `/register/scrapper`
+- Connexion : `/login`
+- Vérifier les droits actuels : `/test/security`
 
 ### Rebond
 #### Beers
@@ -68,28 +49,27 @@ Il sera donc possible d'interroger cette api distante sans rien ajouter en db. S
 
 ### User (CRUD)
 #### Beers
-- Get all beers from database: `/user/beers`
-- Get beer by id: `/user/beers/{id}`
-- Get beers with filters: `/user/beers/filter` Is used with the following request params:
-- - style: get beers by style
-- - brand: get beers by brand
-- - name: get beers by name
-- - **Note**: You can't use all the params at the same time. It is either style, brand, name, brand AND name.
-- Delete beer by id: `/user/beers/{id}`
-- Patch beer by id: `/user/beers/{id}`, a body is required (cf. bruno collection)
-- Post beer: `/user/beers/new`, a body is required (cf. bruno collection)
-
+- Récupérer toutes les beers de la base de données : `/user/beers`
+- Récupérer une beer par ID : `/user/beers/{id}`
+- Récupérer des beers avec des filtres : `/user/beers/filter` (utilisé avec les paramètres suivants) :
+    - `style` : récupérer les beers par style
+    - `brand` : récupérer les beers par marque
+    - `name` : récupérer les beers par nom
+    - **Remarque** : Vous ne pouvez **pas** utiliser tous les paramètres en même temps. Vous pouvez filtrer par **style**, **marque**, **nom**, ou par **marque ET nom** ensemble.
+- Supprimer une beer par ID : `/user/beers/{id}`
+- Mettre à jour une beer par ID (**PATCH**, nécessite un body, voir la collection Bruno) : `/user/beers/{id}`
+- Ajouter une nouvelle beer (**POST**, nécessite un body, voir la collection Bruno) : `/user/beers/new`
 
 #### Clients
-- Get all clients from database: `/user/clients`
-- Get client by id: `/user/clients/{id}`
-- Get clients with filters: `/user/clients/filter` Is used with the following request params:
-- - gender: get clients by gender
-- - date_of_birth: get clients born before the given date of birth
-- - city: get clients by the city in their address
-- - country: get clients by the country in their addresses
-- - **Note**: You can't use all the params at the same time. One param et once.
-- Delete client by id: `/user/clients/{id}`
-- Patch client by id: `/user/clients/{id}`, a body is required (cf. bruno collection)
-- Post client: `/user/clients/new`, a body is required (cf. bruno collection)
+- Récupérer tous les clients de la base de données : `/user/clients`
+- Récupérer un client par ID : `/user/clients/{id}`
+- Récupérer des clients avec des filtres : `/user/clients/filter` (utilisé avec les paramètres suivants) :
+    - `gender` : récupérer les clients par genre
+    - `date_of_birth` : récupérer les clients nés avant une date donnée
+    - `city` : récupérer les clients selon la ville de leur adresse
+    - `country` : récupérer les clients selon le pays de leur adresse
+    - **Remarque** : Vous ne pouvez **pas** utiliser plusieurs paramètres en même temps. Un seul filtre est autorisé par requête.
+- Supprimer un client par ID : `/user/clients/{id}`
+- Mettre à jour un client par ID (**PATCH**, nécessite un body, voir la collection Bruno) : `/user/clients/{id}`
+- Ajouter un nouveau client (**POST**, nécessite un body, voir la collection Bruno) : `/user/clients/new`  
 
