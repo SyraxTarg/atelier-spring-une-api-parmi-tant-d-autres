@@ -21,8 +21,8 @@ Le projet doit :
 - L’ensemble des routes devra pouvoir être testé avec une collection d’appels API (Postman / Bruno).
 
 ## Mise en place du projet
-1) Créer un fichier `application.properties` à la racine du projet
-2) Y copier le contenu du fichier `application.properties.sample` et y renseigner:
+1) Créer un fichier `src/main/resources/application.properties` à la racine du projet
+2) Y copier le contenu du fichier `src/main/resources/application.properties.sample` et y renseigner:
 - - `PORT`: le port de votre base de données
 - - `DATABASE`: le nom de la base de données utilisée pour le projet
 - - `USERNAME`: le username pour accéder à votre base de données
