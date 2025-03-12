@@ -13,16 +13,6 @@
 3) Exporter la collection bruno pour avoir les appels api
 4) N'oubliez pas de créer un environnement pour pouvoir y renseigner `{{connectionPath}}` qui vaut `http://localhost:8085/api/v1`.
 
-## Description du projet
-Trois roles sont définis pour ce projet:
-- ROLE_USER qui va effectuer toutes les actions de crud
-- ROLE_REBOND qui va effectuer les rebonds de requête
-- ROLE_SCRAP qui va scrapper l'api distante
-
-L'api distante utilisée est `https://random-data-api.com/api/v2/`, nous utiliserons les routes `/users` et `/beers`. Retrouvez sa documentation [ici](https://random-data-api.com/documentation).
-
-Il sera donc possible d'interroger cette api distante sans rien ajouter en db. Scrapper les données et les ajouter en db. Effectuer un crud complet sur les données déja enregistrées.
-
 ## Documentation de l'api
 ### Security
 - Inscription avec le rôle **USER** : `/register/user`
